@@ -11,7 +11,16 @@
 <body>
   <main>
     <h1>Savi's First Static Web app</h1>
+    <div id="name">Loading content from api...</div>
   </main>
+  <script>
+    const get_message = { method: 'GET', headers: { 'Content-Type': 'application/json' } }
+    const url = '/api/message';
+
+    (async function () { let { text } = await (await fetch(`/api/message`, get_message)).json();
+    
+    document.querySelector('#name').textContent = text; }())
+  </script>
 </body>
 
 </html>
